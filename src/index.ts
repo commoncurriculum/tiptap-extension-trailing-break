@@ -1,6 +1,6 @@
-import { ExternalTrailingBreak } from "./extension-external-trailing-break"
+import { TrailingBreak } from "./extension-trailing-break";
 
-export * from "./add-remove"
-export * from "./extension-external-trailing-break"
+export * from "./add-remove";
+export * from "./extension-trailing-break";
 
-export default ExternalTrailingBreak
+export default TrailingBreak;

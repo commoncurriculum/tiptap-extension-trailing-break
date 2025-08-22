@@ -10,7 +10,7 @@ TODO: motivation/example
 
 Specifically:
 
-- `getHTMLWithExternalTrailingBreaks(editor)` is a replacement for `editor.getHTML()` that adds
+- `getHTMLWithTrailingBreaks(editor)` is a replacement for `editor.getHTML()` that adds
   trailing breaks to the serialized HTML.
 - The extension sets `transformCopied` so that the same happens to copied HTML.
 
