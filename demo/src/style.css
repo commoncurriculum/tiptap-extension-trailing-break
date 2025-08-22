@@ -1,0 +1,16 @@
+.tiptap {
+  background: white;
+  color: black;
+  background-clip: padding-box;
+  border-radius: 4px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: 5px;
+  max-width: 720px;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.tiptap:focus {
+  outline: none;
+}

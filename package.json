@@ -1,0 +1,70 @@
+{
+  "name": "tiptap-extension-trailing-break",
+  "version": "0.1.0",
+  "description": "Tiptap extension that makes empty lines look the same in generated HTML and the editor",
+  "author": "Common Curriculum, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/commoncurriculum/tiptap-extension-trailing-break/issues"
+  },
+  "homepage": "https://github.com/commoncurriculum/tiptap-extension-trailing-break#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commoncurriculum/tiptap-extension-trailing-break.git"
+  },
+  "keywords": [
+    "tiptap",
+    "list",
+    "quill"
+  ],
+  "main": "build/commonjs/index.js",
+  "browser": "build/esm/index.js",
+  "module": "build/esm/index.js",
+  "types": "build/esm/index.d.ts",
+  "files": [
+    "/build",
+    "/src"
+  ],
+  "directories": {
+    "lib": "src"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "dependencies": {},
+  "peerDependencies": {
+    "@tiptap/core": "2.x || 3.x",
+    "@tiptap/pm": "2.x || 3.x"
+  },
+  "devDependencies": {
+    "@tiptap/core": "3.0.9",
+    "@tiptap/extension-document": "3.0.9",
+    "@tiptap/extension-hard-break": "3.0.9",
+    "@tiptap/extension-paragraph": "3.0.9",
+    "@tiptap/extension-text": "3.0.9",
+    "@tiptap/pm": "3.0.9",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.6.2",
+    "typedoc": "^0.28.10",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.2"
+  },
+  "scripts": {
+    "start": "vite serve demo",
+    "prepack": "npm run clean && npm run build && npm run test",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.commonjs.json",
+    "test": "npm-run-all test:*",
+    "test:lint": "eslint --ext .ts,.js .",
+    "test:format": "prettier --check .",
+    "fix": "npm-run-all fix:*",
+    "fix:format": "prettier --write .",
+    "docs": "typedoc --options typedoc.json src/index.ts",
+    "clean": "rm -rf build docs"
+  }
+}
