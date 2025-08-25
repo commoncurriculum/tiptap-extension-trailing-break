@@ -1,29 +1,30 @@
 # tiptap-extension-trailing-break
 
-A [Tiptap](https://tiptap.dev/) extension that makes empty lines look the same in generated HTML and the editor.
+Browsers render blank paragraphs and lines, like `<p></p>`, with 0 height by default. However, ProseMirror renders these as normal-sized lines so that you can type in them. Thus there is a visual discrepancy between the editor view and the output of `editor.getHTML()`.
 
-When rendering in the editor, ProseMirror will "prop up" empty paragraphs and lines with a
-trailing break (`<br class="ProseMirror-trailingBreak">`).
-This extension lets you add analogous trailing breaks to externally-visible HTML.
+This Tiptap extension fixes the discrepancy by adding trailing breaks to empty paragraphs and lines in exported HTML. Specifically, it adds breaks to `getHTMLWithTrailingBreaks(editor)` (a replacement for `editor.getHTML()`) and to the clipboard when copying. The extra breaks are removed during parsing so that you can "round-trip" the HTML without issue (using `editor.setContent(html)` or pasting).
 
-TODO: motivation/example
-
-Specifically:
-
-- `getHTMLWithTrailingBreaks(editor)` is a replacement for `editor.getHTML()` that adds
-  trailing breaks to the serialized HTML.
-- The extension sets `transformCopied` so that the same happens to copied HTML.
-
-Internally, the extension defines a node type, "externalTrailingBreak", that is never present in the editor
-but added just before serializing to HTML. It serializes to `<br data-external-trailing-break />`,
-which is ignored during parsing so that you don't get extra BRs in the actual editor.
+In detail, the trailing breaks are represented as `<br data-external-trailing-break />`. They are added to the end of text blocks that are either empty, end with non-text inline content (e.g. `<br />`), or end with a newline character---analogous to the `<br class="ProseMirror-trailingBreak">` that ProseMirror adds to the editor view.
 
 ## Docs
 
 Example setup:
 
 ```ts
-TODO;
+import TrailingBreak, {
+  getHTMLWithTrailingBreaks,
+} from "tiptap-extension-trailing-break";
+// ...
+
+const editor = new Editor({
+  element: document.querySelector(".element"),
+  extensions: [Document, Paragraph, Text, HardBreak, TrailingBreak],
+  content: "<p>Hello World!</p>",
+  onUpdate: updateHTMLView,
+});
+
+// To export HTML with the trailing breaks, instead of editor.getHTML(), call:
+console.log(getHTMLWithTrailingBreaks(editor));
 ```
 
 ## Developing
