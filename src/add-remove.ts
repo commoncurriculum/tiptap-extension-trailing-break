@@ -15,6 +15,7 @@ export function addTrailingBreaks(
     return addTrailingBreaksFragment(content);
   else if (content instanceof Slice) return addTrailingBreaksSlice(content);
   else
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     throw new Error("Not an instance of Node | Fragment | Slice: " + content);
 }
 
@@ -104,6 +105,7 @@ export function removeTrailingBreaks(
     return removeTrailingBreaksFragment(content);
   else if (content instanceof Slice) return removeExternalBreaksSlice(content);
   else
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
     throw new Error("Not an instance of Node | Fragment | Slice: " + content);
 }
 
