@@ -1,6 +1,6 @@
 {
   "name": "tiptap-extension-trailing-break",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tiptap extension that makes empty lines look the same in generated HTML and the editor",
   "author": "Common Curriculum, Inc.",
   "license": "MIT",
