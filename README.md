@@ -10,6 +10,12 @@ In detail, the trailing breaks are represented as `<br data-external-trailing-br
 
 ## Docs
 
+Install:
+
+```bash
+npm i tiptap-extension-trailing-break
+```
+
 Example setup:
 
 ```ts
@@ -36,4 +42,3 @@ console.log(getHTMLWithTrailingBreaks(editor));
 - Build with `npm run build`.
 - Lint and check format with `npm run test`.
 - Preview typedoc with `npm run docs`. (Open `docs/index.html` in a browser.)
-- Publish with `npm publish`.
