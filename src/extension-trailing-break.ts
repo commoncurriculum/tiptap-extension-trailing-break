@@ -1,5 +1,5 @@
 import { Editor, getHTMLFromFragment, Node } from "@tiptap/core";
-import { Plugin } from "@tiptap/pm/state";
+import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { addTrailingBreaks } from "./add-remove";
 import { EXTENSION_NAME } from "./name";
 
@@ -43,6 +43,7 @@ export const TrailingBreak = Node.create({
   addProseMirrorPlugins() {
     return [
       new Plugin({
+        key: new PluginKey(EXTENSION_NAME),
         props: {
           transformCopied(slice) {
             // Add external trailing breaks to clipboard HTML.
