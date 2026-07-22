@@ -1,6 +1,6 @@
 import { Editor, getHTMLFromFragment, Node } from "@tiptap/core";
 import { Plugin, PluginKey } from "@tiptap/pm/state";
-import { addTrailingBreaks } from "./add-remove";
+import { addTrailingBreaks, removeTrailingBreaks } from "./add-remove";
 import { EXTENSION_NAME } from "./name";
 
 // Based on https://github.com/ueberdosis/tiptap/blob/main/packages/extension-hard-break/src/hard-break.ts
@@ -37,7 +37,7 @@ export const TrailingBreak = Node.create({
   },
 
   renderHTML() {
-    return ["br", { "data-external-trailing-break": true }];
+    return ["br", { "data-external-trailing-break": "" }];
   },
 
   addProseMirrorPlugins() {
@@ -52,6 +52,13 @@ export const TrailingBreak = Node.create({
             // See https://github.com/ProseMirror/prosemirror/issues/1511#issuecomment-2967806051
             // and earlier comments in that issue.
             return addTrailingBreaks(slice);
+          },
+          transformPasted(slice) {
+            // Remove external trailing breaks.
+            // When pasting HTML, this is not necessary because our `ignore` parse rule
+            // prevents them from ending up in the slice. However, we do need it for
+            // drag-and-drop within the same editor, because that transfers the slice directly.
+            return removeTrailingBreaks(slice);
           },
         },
       }),
