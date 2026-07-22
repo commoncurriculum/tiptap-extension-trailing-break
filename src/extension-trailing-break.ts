@@ -37,7 +37,7 @@ export const TrailingBreak = Node.create({
   },
 
   renderHTML() {
-    return ["br", { "data-external-trailing-break": true }];
+    return ["br", { "data-external-trailing-break": "" }];
   },
 
   addProseMirrorPlugins() {
