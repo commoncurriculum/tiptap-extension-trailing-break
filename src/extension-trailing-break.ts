@@ -1,7 +1,7 @@
 import { Editor, getHTMLFromFragment, Node } from "@tiptap/core";
 import { Plugin, PluginKey } from "@tiptap/pm/state";
-import { addTrailingBreaks, removeTrailingBreaks } from "./add-remove";
-import { EXTENSION_NAME } from "./name";
+import { addTrailingBreaks, removeTrailingBreaks } from "./add-remove.ts";
+import { EXTENSION_NAME } from "./name.ts";
 
 // Based on https://github.com/ueberdosis/tiptap/blob/main/packages/extension-hard-break/src/hard-break.ts
 

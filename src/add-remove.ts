@@ -1,5 +1,5 @@
 import { Fragment, Node, Schema, Slice } from "@tiptap/pm/model";
-import { EXTENSION_NAME } from "./name";
+import { EXTENSION_NAME } from "./name.ts";
 
 /**
  * Adds external trailing breaks to given document (or other content) as needed to prop up empty paragraphs and lines.
