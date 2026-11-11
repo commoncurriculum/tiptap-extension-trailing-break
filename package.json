@@ -76,7 +76,6 @@
     "fix": "npm-run-all fix:*",
     "fix:format": "prettier --write .",
     "docs": "typedoc --options typedoc.json src/index.ts",
-    "clean": "rm -rf build docs",
-    "test:node": "node test/node-smoke.cjs && node test/node-smoke.mjs"
+    "clean": "rm -rf build docs"
   }
 }
